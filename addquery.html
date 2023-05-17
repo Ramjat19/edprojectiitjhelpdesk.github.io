@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="add.css">
+</head>
+<body>
+    <div class="head">
+        <div class="logo">
+            <img src="iitjlogo.png" alt="">
+        </div>
+        <h1>IITJ HELPDESK</h1>
+        <button class="login"><a href="login.html"> login</a></button>
+        <input type="search" placeholder="search...">
+        
+    </div>
+    <div class="form">
+
+        <form action="" class="mass" name="submit-to-google-sheet" method="post">
+            <h1>ADD question </h1>
+            <hr>
+            Email:<br><input class="number" type="email" placeholder="email" name="email" required><br>
+   New Question: <br>
+            <input class="number" type="masseage " placeholder="question" name="new_question" required><br>
+
+            <button class="submit" name="button">Submit</button>
+            <div id="success"></div>
+        </form>
+        </div>
+        <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbx3skh6gK4dEjvb9xhiIihPnaMmm98SC1RQTfLFA1OJ8lDuPDt6ifM1jb85cNNxzMjp8Q/exec'
+                const form = document.forms['submit-to-google-sheet']
+              const success = document.getElementById('success')
+                form.addEventListener('submit', e => {
+                  e.preventDefault()
+                  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                    .then(response =>{
+    success.innerHTML="THANKS for Adding NEW Question";
+    
+    setTimeout(function()
+    {
+        success.innerHTML="";
+    },5000)
+    form.reset();
+                    })
+                    .catch(error => console.error('Error!', error.message))
+                })
+        </script>
+    
+</body>
+</html>
