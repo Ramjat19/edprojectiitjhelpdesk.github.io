@@ -133,3 +133,9 @@
         
     }
 }
+@media only screen and (max-width: 1515px){
+    .head input {
+        margin-top: -55px;
+        
+    }
+}
