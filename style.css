@@ -127,3 +127,9 @@
     margin-left: 100px;
     filter: invert();
 }
+@media only screen and (max-width: 1510px){
+    .head input {
+        margin-top: -55px;
+        
+    }
+}
